@@ -853,11 +853,11 @@ button {
     }
 
     .logo-image {
-        width: 58px;
-        height: 30px;
-        flex: 0 0 58px;
+        width: 72px;
+        height: 36px;
+        flex: 0 0 72px;
         order: 2;
-        background-size: 150% auto;
+        background-size: 142% auto;
         background-position: left 53%;
     }
 
