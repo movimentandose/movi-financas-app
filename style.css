@@ -875,7 +875,7 @@ button {
     }
 
     .topbar h1 {
-        font-size: clamp(26px, 8vw, 32px);
+        font-size: 26px;
     }
 
     .page-intro {
@@ -889,7 +889,7 @@ button {
     }
 
     .page-intro h2 {
-        font-size: clamp(32px, 10vw, 38px);
+        font-size: 26px;
     }
 
     .period-filter {
