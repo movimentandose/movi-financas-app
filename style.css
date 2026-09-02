@@ -846,29 +846,35 @@ button {
     }
 
     .brand-area {
-        position: absolute;
-        top: 52px;
-        left: 18px;
-        width: 58px;
-        z-index: 1;
-        margin: 0;
-        display: block;
+        display: none;
     }
 
     .logo-image {
-        width: 58px;
-        height: 30px;
-        background-size: 150% auto;
-        background-position: left 53%;
+        display: none;
     }
 
     .home-content h1 {
+        position: relative;
         max-width: 100%;
         padding-left: 68px;
         font-size: clamp(24px, 7vw, 28px);
         line-height: 1;
         margin-top: 12px;
         margin-bottom: 14px;
+    }
+
+    .home-content h1::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 58px;
+        height: 30px;
+        transform: translateY(-50%);
+        background-image: url("assets/logo-movi.png");
+        background-repeat: no-repeat;
+        background-size: 150% auto;
+        background-position: left 53%;
     }
 
     .home-lead {
