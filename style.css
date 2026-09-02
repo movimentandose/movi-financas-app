@@ -67,8 +67,13 @@ button {
 }
 
 .brand-area {
-    align-self: flex-end;
+    width: 100%;
+    max-width: 1100px;
+    margin-right: auto;
+    margin-left: auto;
     margin-bottom: 2vh;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .logo-image {
