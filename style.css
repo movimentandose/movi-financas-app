@@ -786,6 +786,16 @@ button {
         line-height: 1;
     }
 
+    .menu button[data-page="entrada"] i.fa-arrow-down-to-bracket {
+        display: none;
+    }
+
+    .menu button[data-page="entrada"]:has(i.fa-arrow-down-to-bracket)::before {
+        content: "+";
+        font-size: 18px;
+        line-height: 1;
+    }
+
     .menu-label {
         position: absolute;
         width: 1px;
