@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movi Finanças</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- TELA INICIAL -->
+
+    <section id="homeScreen" class="home-screen">
+
+        <div class="brand-area">
+            <div
+                class="logo-image"
+                role="img"
+                aria-label="Movi Finanças"
+            ></div>
+        </div>
+
+        <div class="home-content">
+
+            <p class="eyebrow">
+                CONTROLE FINANCEIRO
+            </p>
+
+            <h1>
+                MOVI FINANÇAS
+            </h1>
+
+            <p class="home-lead">
+                Escolha o ambiente que deseja acessar.
+            </p>
+
+            <div class="profile-grid">
+
+                <button
+                    class="profile-card"
+                    onclick="entrarSistema('pf')"
+                >
+
+                    <div class="profile-number">
+                        01
+                    </div>
+
+                    <div>
+                        <span>Pessoa Física</span>
+                        <h2>PF</h2>
+
+                        <p>
+                            Organize sua vida financeira,
+                            gastos, patrimônio e investimentos.
+                        </p>
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="profile-card dark"
+                    onclick="entrarSistema('pj')"
+                >
+
+                    <div class="profile-number">
+                        02
+                    </div>
+
+                    <div>
+                        <span>Pessoa Jurídica</span>
+                        <h2>PJ</h2>
+
+                        <p>
+                            Gerencie sua empresa,
+                            clientes, faturamento e investimentos.
+                        </p>
+                    </div>
+
+                    <div class="arrow">
+                        →
+                    </div>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SISTEMA -->
+
+    <section id="appScreen" class="app-screen hidden">
+
+        <aside class="sidebar">
+
+            <div>
+
+                <div class="current-profile">
+
+                    <span>AMBIENTE</span>
+
+                    <div class="profile-switch">
+
+                        <button
+                            id="btnPf"
+                            onclick="trocarPerfil('pf')"
+                        >
+                            PF
+                        </button>
+
+                        <button
+                            id="btnPj"
+                            onclick="trocarPerfil('pj')"
+                        >
+                            PJ
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <nav id="menu" class="menu"></nav>
+
+            </div>
+
+
+            <button
+                class="back-home"
+                onclick="voltarInicio()"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar ao início
+            </button>
+
+        </aside>
+
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+                    <span class="eyebrow">
+                        MOVI FINANÇAS
+                    </span>
+
+                    <h1 id="pageTitle">
+                        Visão Geral
+                    </h1>
+                </div>
+
+                <div class="topbar-right">
+
+                    <div id="profileBadge" class="profile-badge">
+                        PF
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <section
+                id="dashboardPage"
+                class="page active"
+            >
+
+                <div class="hero-balance">
+
+                    <span>Saldo atual</span>
+
+                    <h2 id="saldoAtual">
+                        R$ 0,00
+                    </h2>
+
+                    <p id="saldoTexto">
+                        Resultado das movimentações
+                    </p>
+
+                </div>
+
+                <div class="period-filter">
+                    <label for="periodoMes">Período</label>
+                    <select id="periodoMes">
+                        <option value="all">Ano inteiro</option>
+                        <option value="0">Janeiro</option>
+                        <option value="1">Fevereiro</option>
+                        <option value="2">Março</option>
+                        <option value="3">Abril</option>
+                        <option value="4">Maio</option>
+                        <option value="5">Junho</option>
+                        <option value="6">Julho</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Setembro</option>
+                        <option value="9">Outubro</option>
+                        <option value="10">Novembro</option>
+                        <option value="11">Dezembro</option>
+                    </select>
+                </div>
+
+
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+                        <span>Entradas</span>
+                        <strong id="totalEntradas">R$ 0,00</strong>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Saídas</span>
+                        <strong id="totalSaidas">R$ 0,00</strong>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Custos Fixos</span>
+                        <strong id="totalFixos">R$ 0,00</strong>
+                    </div>
+
+                    <div class="summary-card">
+                        <span>Custos Variáveis</span>
+                        <strong id="totalVariaveis">R$ 0,00</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+                            <div>
+                                <span class="eyebrow">
+                                    MOVIMENTAÇÕES
+                                </span>
+
+                                <h3>
+                                    Últimos lançamentos
+                                </h3>
+                            </div>
+                        </div>
+
+                        <div id="ultimasMovimentacoes"></div>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <span class="eyebrow">
+                            RESULTADO
+                        </span>
+
+                        <h3>
+                            Resumo financeiro
+                        </h3>
+
+                        <div class="result-row">
+                            <span>Receitas</span>
+                            <strong id="resumoReceitas">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                        <div class="result-row">
+                            <span>Despesas</span>
+                            <strong id="resumoDespesas">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="result-row total">
+                            <span>Resultado</span>
+                            <strong id="resumoResultado">
+                                R$ 0,00
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel annual-panel">
+                    <span class="eyebrow">ANO</span>
+                    <h3>Resumo mês a mês</h3>
+                    <div id="resumoMensal" class="monthly-grid"></div>
+                </div>
+
+            </section>
+
+
+            <!-- MOVIMENTAÇÕES -->
+
+            <section
+                id="movPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="eyebrow">
+                            MOVIMENTAÇÕES
+                        </span>
+
+                        <h2 id="movTitle">
+                            Entradas
+                        </h2>
+
+                        <p id="movSubtitle">
+                            Registre suas movimentações financeiras.
+                        </p>
+                    </div>
+
+                    <div class="page-total">
+
+                        <span>Total</span>
+
+                        <strong id="movTotal">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <div class="form-panel">
+
+                        <h3 id="formTitle">
+                            Novo lançamento
+                        </h3>
+
+                        <form id="movForm">
+
+                            <input
+                                type="hidden"
+                                id="movTipo"
+                            >
+
+                            <div class="form-group">
+
+                                <label>
+                                    Descrição
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="descricao"
+                                    placeholder="Descrição"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Valor
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="valor"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0,00"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Data
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="data"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="primary-btn"
+                            >
+                                Adicionar
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Histórico
+                        </h3>
+
+                        <div id="movLista"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- INVESTIMENTOS -->
+
+            <section
+                id="investimentosPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="eyebrow">
+                            PATRIMÔNIO
+                        </span>
+
+                        <h2>
+                            Carteira de investimentos
+                        </h2>
+
+                        <p>
+                            Consulte onde você investiu,
+                            os aportes e o valor atual.
+                        </p>
+                    </div>
+
+                    <div class="page-total">
+
+                        <span>Patrimônio</span>
+
+                        <strong id="totalInvestimentos">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <div class="form-panel">
+
+                        <h3>
+                            Novo investimento
+                        </h3>
+
+                        <form id="investimentoForm">
+
+                            <input type="hidden" id="investId">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="investNome"
+                                    placeholder="Ex: CDB, Bitcoin, Tesouro..."
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Categoria
+                                </label>
+
+                                <select id="investCategoria">
+
+                                    <option>
+                                        Renda Fixa
+                                    </option>
+
+                                    <option>
+                                        Ações
+                                    </option>
+
+                                    <option>
+                                        Criptomoedas
+                                    </option>
+
+                                    <option>
+                                        Fundos
+                                    </option>
+
+                                    <option>
+                                        Reserva
+                                    </option>
+
+                                    <option>
+                                        Outros
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Carteira / instituição
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="investCarteira"
+                                    placeholder="Ex: NuInvest, XP, Binance..."
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Valor do aporte
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="investValor"
+                                    min="0"
+                                    step="0.01"
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <label>
+                                    Valor atual
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="investAtual"
+                                    min="0"
+                                    step="0.01"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="investData">Data do investimento</label>
+                                <input
+                                    type="date"
+                                    id="investData"
+                                    required
+                                >
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="primary-btn"
+                                id="investSubmit"
+                            >
+                                Adicionar investimento
+                            </button>
+
+                            <button
+                                type="button"
+                                class="secondary-btn hidden"
+                                id="investCancelar"
+                                onclick="cancelarEdicaoInvestimento()"
+                            >
+                                Cancelar edição
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Carteira
+                        </h3>
+
+                        <div id="investLista"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CLIENTES -->
+
+            <section
+                id="clientesPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="eyebrow">
+                            GESTÃO COMERCIAL
+                        </span>
+
+                        <h2>
+                            Clientes
+                        </h2>
+
+                        <p>
+                            Controle clientes, contratos
+                            e valores recorrentes.
+                        </p>
+                    </div>
+
+                    <div class="page-total">
+
+                        <span>Clientes ativos</span>
+
+                        <strong id="clientesAtivos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="content-grid">
+
+                    <div class="form-panel">
+
+                        <h3>
+                            Novo cliente
+                        </h3>
+
+                        <form id="clienteForm">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Cliente / Empresa
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="clienteNome"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Serviço
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="clienteServico"
+                                    placeholder="Consultoria, gestão..."
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Valor mensal
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="clienteValor"
+                                    step="0.01"
+                                    min="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Vencimento
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="clienteVencimento"
+                                    min="1"
+                                    max="31"
+                                    required
+                                >
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clienteData">Próximo vencimento</label>
+                                <input
+                                    type="date"
+                                    id="clienteData"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Status
+                                </label>
+
+                                <select id="clienteStatus">
+
+                                    <option value="ativo">
+                                        Ativo
+                                    </option>
+
+                                    <option value="pausado">
+                                        Pausado
+                                    </option>
+
+                                    <option value="encerrado">
+                                        Encerrado
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="primary-btn"
+                            >
+                                Cadastrar cliente
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+                    <div class="panel">
+
+                        <h3>
+                            Carteira de clientes
+                        </h3>
+
+                        <div id="clientesLista"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CONTAS A RECEBER -->
+
+            <section
+                id="receberPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+                        <span class="eyebrow">
+                            RECEBIMENTOS
+                        </span>
+
+                        <h2>
+                            Contas a Receber
+                        </h2>
+
+                        <p>
+                            Veja o que já foi pago
+                            e o que ainda está pendente.
+                        </p>
+                    </div>
+
+                    <div class="page-total">
+
+                        <span>Pendente</span>
+
+                        <strong id="totalPendente">
+                            R$ 0,00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div id="receberLista"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TRANSFERÊNCIAS -->
+
+            <section
+                id="transferenciasPage"
+                class="page"
+            >
+
+                <div class="page-intro">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            PF ↔ PJ
+                        </span>
+
+                        <h2>
+                            Transferências
+                        </h2>
+
+                        <p>
+                            Movimente valores entre
+                            sua conta pessoal e empresarial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-panel transfer-panel">
+
+                    <form id="transferForm">
+
+                        <div class="form-group">
+
+                            <label>
+                                Origem
+                            </label>
+
+                            <select id="transferOrigem">
+
+                                <option value="pj">
+                                    PJ
+                                </option>
+
+                                <option value="pf">
+                                    PF
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Destino
+                            </label>
+
+                            <select id="transferDestino">
+
+                                <option value="pf">
+                                    PF
+                                </option>
+
+                                <option value="pj">
+                                    PJ
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Descrição
+                            </label>
+
+                            <input
+                                type="text"
+                                id="transferDescricao"
+                                placeholder="Ex: Pró-labore"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Valor
+                            </label>
+
+                            <input
+                                type="number"
+                                id="transferValor"
+                                min="0"
+                                step="0.01"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Data
+                            </label>
+
+                            <input
+                                type="date"
+                                id="transferData"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="primary-btn"
+                        >
+                            Realizar transferência
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
