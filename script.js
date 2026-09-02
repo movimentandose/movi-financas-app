@@ -276,7 +276,7 @@ function montarMenu() {
 
     const icones = {
         dashboard: "fa-chart-line",
-        entrada: "fa-arrow-down-to-bracket",
+        entrada: "fa-plus",
         saida: "fa-arrow-up-from-bracket",
         fixo: "fa-lock",
         variavel: "fa-sliders",
