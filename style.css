@@ -17,7 +17,7 @@
     --red: #a44a4a;
     --font-body: "DM Sans", sans-serif;
     --font-brand: "Montserrat", sans-serif;
-    --font-display: "Playfair Display", serif;
+    --font-display: "Montserrat", sans-serif;
     --text-xs: 0.6875rem;
     --text-sm: 0.8125rem;
     --text-md: 0.9375rem;
@@ -156,7 +156,7 @@ button {
 
 .profile-card {
     border: none;
-    background: transparent;
+    background: var(--white);
     min-height: 310px;
     padding: 30px;
     text-align: left;
@@ -181,6 +181,10 @@ button {
     background: #232323;
 }
 
+.profile-card.light {
+    border-right: 1px solid var(--black);
+}
+
 .profile-number {
     font-size: var(--text-xs);
     color: var(--gray);
@@ -193,9 +197,10 @@ button {
 
 .profile-card h2 {
     font-family: var(--font-display);
-    font-size: 70px;
+    font-size: 52px;
     font-weight: 500;
-    margin: 12px 0 30px;
+    line-height: 1;
+    margin: 12px 0 24px;
 }
 
 .profile-card p {
@@ -807,8 +812,8 @@ button {
     }
 
     .profile-card h2 {
-        font-size: clamp(54px, 18vw, 70px);
-        margin: 10px 0 22px;
+        font-size: clamp(42px, 14vw, 52px);
+        margin: 10px 0 18px;
     }
 
     .profile-card p {
