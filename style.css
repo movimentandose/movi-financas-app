@@ -82,7 +82,7 @@ button {
     background-image: url("assets/logo-movi.png");
     background-repeat: no-repeat;
     background-size: 118% auto;
-    background-position: center 53%;
+    background-position: left 53%;
 }
 
 .sidebar-logo {
@@ -859,6 +859,7 @@ button {
         width: 58px;
         height: 30px;
         background-size: 150% auto;
+        background-position: center 53%;
     }
 
     .home-content h1 {
