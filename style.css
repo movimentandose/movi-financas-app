@@ -183,6 +183,18 @@ button {
 
 .profile-card.light {
     border-right: 1px solid var(--black);
+    color: var(--black);
+}
+
+.profile-card.light .profile-number,
+.profile-card.light span,
+.profile-card.light p {
+    color: var(--gray);
+}
+
+.profile-card.light h2,
+.profile-card.light .arrow {
+    color: var(--black);
 }
 
 .profile-number {
