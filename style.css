@@ -73,7 +73,7 @@ button {
     margin-left: auto;
     margin-bottom: 2vh;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .logo-image {
@@ -838,15 +838,33 @@ button {
 @media (max-width: 600px) {
 
     .home-screen {
+        position: relative;
+    }
+
+    .home-screen {
         padding: 28px 18px 48px;
     }
 
     .brand-area {
-        margin-bottom: 18px;
+        position: absolute;
+        top: 52px;
+        left: 18px;
+        width: 58px;
+        z-index: 1;
+        margin: 0;
+        display: block;
+    }
+
+    .logo-image {
+        width: 58px;
+        height: 30px;
+        background-size: 150% auto;
     }
 
     .home-content h1 {
-        font-size: clamp(27px, 8.5vw, 38px);
+        max-width: 100%;
+        padding-left: 68px;
+        font-size: clamp(24px, 7vw, 28px);
         line-height: 1;
         margin-top: 12px;
         margin-bottom: 14px;
