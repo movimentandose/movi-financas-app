@@ -66,14 +66,11 @@ button {
     flex-direction: column;
 }
 
-.brand-area {
-    width: 100%;
-    max-width: 1100px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 2vh;
+.home-heading {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 28px;
 }
 
 .logo-image {
@@ -143,8 +140,7 @@ button {
     font-weight: 600;
     line-height: var(--leading-tight);
     letter-spacing: 0;
-    margin-top: 15px;
-    margin-bottom: 18px;
+    margin: 10px 0 0;
 }
 
 .home-lead {
@@ -838,43 +834,30 @@ button {
 @media (max-width: 600px) {
 
     .home-screen {
-        position: relative;
-    }
-
-    .home-screen {
         padding: 28px 18px 48px;
     }
 
-    .brand-area {
-        display: none;
+    .home-heading {
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
     }
 
     .logo-image {
-        display: none;
+        width: 58px;
+        height: 30px;
+        flex: 0 0 58px;
+        background-size: 150% auto;
+        background-position: left 53%;
     }
 
     .home-content h1 {
         position: relative;
         max-width: 100%;
-        padding-left: 68px;
+        padding-left: 0;
         font-size: clamp(24px, 7vw, 28px);
         line-height: 1;
-        margin-top: 12px;
-        margin-bottom: 14px;
-    }
-
-    .home-content h1::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 58px;
-        height: 30px;
-        transform: translateY(-50%);
-        background-image: url("assets/logo-movi.png");
-        background-repeat: no-repeat;
-        background-size: 150% auto;
-        background-position: left 53%;
+        margin-top: 6px;
     }
 
     .home-lead {
