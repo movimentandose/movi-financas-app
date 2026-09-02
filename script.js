@@ -274,6 +274,17 @@ function montarMenu() {
     const menu =
         document.getElementById("menu");
 
+    const icones = {
+        dashboard: "fa-chart-line",
+        entrada: "fa-arrow-down-to-bracket",
+        saida: "fa-arrow-up-from-bracket",
+        fixo: "fa-lock",
+        variavel: "fa-sliders",
+        investimentos: "fa-chart-pie",
+        clientes: "fa-users",
+        receber: "fa-file-invoice-dollar",
+        transferencias: "fa-arrow-right-arrow-left"
+    };
 
     menu.innerHTML = "";
 
@@ -284,7 +295,12 @@ function montarMenu() {
             document.createElement("button");
 
 
-        btn.innerText = item[1];
+        btn.innerHTML = `
+            <i class="fa-solid ${icones[item[0]] || "fa-circle"}" aria-hidden="true"></i>
+            <span class="menu-label">${item[1]}</span>
+        `;
+        btn.title = item[1];
+        btn.setAttribute("aria-label", item[1]);
 
         btn.dataset.page = item[0];
 
